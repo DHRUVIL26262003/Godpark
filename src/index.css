@@ -1,0 +1,207 @@
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 216 50% 4%;
+    --foreground: 220 30% 97%;
+    --card: 216 45% 8%;
+    --card-foreground: 220 30% 97%;
+    --popover: 216 45% 8%;
+    --popover-foreground: 220 30% 97%;
+    --primary: 0 0% 100%;
+    --primary-foreground: 216 50% 4%;
+    --secondary: 216 35% 12%;
+    --secondary-foreground: 220 30% 97%;
+    --muted: 216 35% 12%;
+    --muted-foreground: 220 15% 65%;
+    --accent: 216 35% 12%;
+    --accent-foreground: 220 30% 97%;
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 216 30% 18%;
+    --input: 216 30% 18%;
+    --ring: 0 0% 100%;
+    --radius: 0.75rem;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-background text-foreground antialiased;
+    font-family: 'Inter', system-ui, sans-serif;
+    background-color: #050B14;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-family: 'Space Grotesk', system-ui, sans-serif;
+    letter-spacing: -0.02em;
+    line-height: 1.05;
+  }
+
+  code,
+  .mono {
+    font-family: 'IBM Plex Mono', monospace;
+  }
+}
+
+@layer utilities {
+  .text-gradient {
+    @apply bg-clip-text text-transparent;
+    background-image: linear-gradient(135deg, #ffffff 0%, #A7B1C6 100%);
+  }
+
+  .glow-line {
+    box-shadow: 0 0 20px rgba(255, 255, 255, 0.3), 0 0 40px rgba(255, 255, 255, 0.1);
+  }
+
+  .card-shadow {
+    box-shadow: 0 24px 70px rgba(0, 0, 0, 0.45);
+  }
+
+  .btn-shadow {
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
+  }
+
+  .grain-overlay {
+    position: relative;
+  }
+
+  .grain-overlay::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+    opacity: 0.04;
+    mix-blend-mode: overlay;
+    pointer-events: none;
+    z-index: 1;
+  }
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #050B14;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #1a2744;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #2a3a5c;
+}
+
+/* Animation keyframes */
+@keyframes scanLine {
+  0% {
+    transform: scaleY(0);
+    transform-origin: top;
+  }
+
+  100% {
+    transform: scaleY(1);
+    transform-origin: top;
+  }
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideInFromLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-60vw);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes slideInFromRight {
+  from {
+    opacity: 0;
+    transform: translateX(60vw);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.animate-scan-line {
+  animation: scanLine 1.1s ease-out forwards;
+}
+
+
+/* Safe Mode / High Contrast */
+body.safe-mode {
+  --background: 0 0% 0%;
+  --foreground: 0 0% 100%;
+  --card: 0 0% 10%;
+  --border: 0 0% 100%;
+  --primary: 0 0% 100%;
+  --muted: 0 0% 20%;
+  background-color: #000000;
+  color: #ffffff;
+}
+
+body.safe-mode * {
+  animation: none !important;
+  transition: none !important;
+  box-shadow: none !important;
+  text-shadow: none !important;
+  backdrop-filter: none !important;
+  background-image: none !important;
+}
+
+body.safe-mode .text-gradient {
+  background: none;
+  -webkit-text-fill-color: #ffffff;
+  color: #ffffff;
+}
+
+body.safe-mode .grain-overlay::after {
+  display: none;
+}
+
+body.safe-mode div,
+body.safe-mode button,
+body.safe-mode input,
+body.safe-mode nav {
+  border-color: #ffffff !important;
+  border-width: 1px;
+}
