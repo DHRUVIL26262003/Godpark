@@ -1,0 +1,12 @@
+
+> my-app@0.0.0 build
+> tsc -b && vite build
+
+src/components/Chatbot.tsx(2,32): error TS6133: 'AlertTriangle' is declared but its value is never read.
+src/components/Chatbot.tsx(18,25): error TS6133: 'logEvent' is declared but its value is never read.
+src/components/Footer.tsx(1,45): error TS6133: 'Mail' is declared but its value is never read.
+src/components/ui/SecurityHUD.tsx(3,10): error TS6133: 'Shield' is declared but its value is never read.
+src/components/ui/SecurityHUD.tsx(3,18): error TS6133: 'AlertTriangle' is declared but its value is never read.
+src/components/ui/SecurityHUD.tsx(3,43): error TS6133: 'X' is declared but its value is never read.
+src/components/ui/SecurityHUD.tsx(3,80): error TS6133: 'Lock' is declared but its value is never read.
+src/components/ui/SecurityHUD.tsx(3,86): error TS6133: 'AlertOctagon' is declared but its value is never read.
